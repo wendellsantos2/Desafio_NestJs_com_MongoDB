@@ -46,7 +46,7 @@ json:  <br/>
     "compress": 0.9<br/>
 }
 
-Substitua URL_DA_IMAGEM pela URL pública de uma imagem JPEG e VALOR_DE_COMPRESSÃO pelo valor de compressão desejado (entre 0 e 1).
+Substitua URL_DA_IMAGEM pela URL pública de uma imagem JPEG e VALOR_DE_COMPRESSÃO pelo valor de compressão desejado (entre 0 e 9).
 
 4- A imagem será salva no sistema de arquivos e uma versão reduzida da imagem será gerada com o sufixo _thumb no nome do arquivo. Os caminhos locais das imagens e os metadados do EXIF serão retornados como resposta.
 
