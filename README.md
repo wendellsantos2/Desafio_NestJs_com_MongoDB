@@ -53,10 +53,8 @@ Substitua URL_DA_IMAGEM pela URL pública de uma imagem JPEG e VALOR_DE_COMPRESS
  A imagem será salva no sistema de arquivos e uma versão reduzida da imagem será gerada com o sufixo _thumb no nome do arquivo. Os caminhos locais das imagens e os metadados do EXIF serão retornados como resposta.
 
  
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Autor -  Wendell Santos 
+- Website - (https://wendellsantosdeveloper.online/))
+- Likendin - (https://www.linkedin.com/in/wendell-santos2/)
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+ 
