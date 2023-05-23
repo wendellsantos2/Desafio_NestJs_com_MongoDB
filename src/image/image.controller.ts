@@ -6,6 +6,7 @@ import * as sharp from 'sharp';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Image } from './image.model';
+import * as path from 'path';
 
 @Controller('image')
 export class ImageController {
@@ -18,14 +19,16 @@ export class ImageController {
     @Body() body: { image: string; compress: number },
     @Res() res: Response,
   ) {
-    const { image, compress } = body;
+    const { image } = body;
 
     try {
       const { data } = await axios.get(image, { responseType: 'arraybuffer' });
       const buffer = Buffer.from(data, 'binary');
 
-      const originalFileName = 'original.jpg';
-      const thumbFileName = 'thumb.jpg';
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const desktopPath = path.join(require('os').homedir(), 'Desktop');
+      const originalFileName = path.join(desktopPath, 'original.jpg');
+      const thumbFileName = path.join(desktopPath, 'thumb.jpg');
 
       // Salvar imagem original
       await sharp(buffer)
