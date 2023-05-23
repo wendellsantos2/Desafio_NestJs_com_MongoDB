@@ -6,7 +6,6 @@ import * as sharp from 'sharp';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Image } from './image.model';
-import * as path from 'path';
 
 @Controller('image')
 export class ImageController {
@@ -25,14 +24,11 @@ export class ImageController {
       const { data } = await axios.get(image, { responseType: 'arraybuffer' });
       const buffer = Buffer.from(data, 'binary');
 
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const desktopPath = path.join(require('os').homedir(), 'Desktop');
-      const originalFileName = path.join(desktopPath, 'original.jpg');
-      const thumbFileName = path.join(desktopPath, 'thumb.jpg');
+      const originalFilePath = '/path/to/original.jpg';
+      const thumbFilePath = '/path/to/thumb.jpg';
 
       // Salvar imagem original
-      await sharp(buffer)
-        .toFile(originalFileName);
+      await sharp(buffer).toFile(originalFilePath);
 
       // Redimensionar imagem
       const { width, height } = await sharp(buffer).metadata();
@@ -42,15 +38,15 @@ export class ImageController {
 
       await sharp(buffer)
         .resize(thumbWidth, thumbHeight)
-        .toFile(thumbFileName);
+        .toFile(thumbFilePath);
 
       // Registrar metadados
       const metadata = await sharp(buffer).metadata();
 
       // Salvar informações da imagem no MongoDB
       const savedImage = await this.imageModel.create({
-        originalPath: originalFileName,
-        thumbPath: thumbFileName,
+        originalPath: originalFilePath,
+        thumbPath: thumbFilePath,
         metadata,
       });
 
@@ -75,24 +71,23 @@ export class ImageController {
   }
 
   @Get()
-async getAllImages(@Res() res: Response) {
-  try {
-    const images = await this.imageModel.find();
+  async getAllImages(@Res() res: Response) {
+    try {
+      const images = await this.imageModel.find();
 
-    res.status(200).json({
-      images,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      errors: [
-        {
-          code: 'INTERNAL_SERVER_ERROR',
-          message: 'Internal server error',
-        },
-      ],
-    });
+      res.status(200).json({
+        images,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        errors: [
+          {
+            code: 'INTERNAL_SERVER_ERROR',
+            message: 'Internal server error',
+          },
+        ],
+      });
+    }
   }
-}
-
 }

@@ -5,7 +5,6 @@ import axios from 'axios';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Image } from './image.model';
-
 @Injectable()
 export class ImageService {
   constructor(@InjectModel('Image') private readonly imageModel: Model<Image>) {}
@@ -17,7 +16,7 @@ export class ImageService {
 
       const originalFileName = 'original.jpg';
       const thumbFileName = 'thumb.jpg';
-      const imagesDirectory = 'images';
+      const imagesDirectory = 'C://path/to';
 
       await sharp(imageBuffer)
         .toFile(`${imagesDirectory}/${originalFileName}`);
