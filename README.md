@@ -30,17 +30,17 @@
 
 ## Instalação
 Use o gerenciador de pacotes npm para instalar as dependências.
-<h2>npm install</h2>
+<h2> 1- npm install</h2>
 
 
 ## Banco da dados
 1- Configuração do banco de dados: Certifique-se de ter o MongoDB instalado em sua máquina ou utilize um serviço de banco de dados em nuvem. No arquivo src/app.module.ts, ajuste a URL de conexão do Mongoose para o seu banco de dados MongoDB.
 
 2- Execute o seguinte comando para iniciar o servidor de desenvolvimento:
- <h2>npm run start</h2>
+ <h2>2- npm run start</h2>
 
  3- O servidor estará em execução em http://localhost:3000. Você pode enviar uma solicitação POST para http://localhost:3000/image/save com o seguinte corpo no formato <br/> JSON: <br/>
-json: 
+json:  <br/> 
 {
     "image": "https://assets.storage.trakto.io/AkpvCuxXGMf3npYXajyEZ8A2APn2/0e406885-9d03-4c72-bd92-c6411fbe5c49.jpeg",<br/>
     "compress": 0.9<br/>
