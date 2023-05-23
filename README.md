@@ -26,44 +26,31 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+ 
 
-```bash
-$ npm install
-```
+## Instalação
+Use o gerenciador de pacotes npm para instalar as dependências.
+npm install
 
-## Running the app
 
-```bash
-# development
-$ npm run start
+## Uso
+1- Configuração do banco de dados: Certifique-se de ter o MongoDB instalado em sua máquina ou utilize um serviço de banco de dados em nuvem. No arquivo src/app.module.ts, ajuste a URL de conexão do Mongoose para o seu banco de dados MongoDB.
 
-# watch mode
-$ npm run start:dev
+2- Execute o seguinte comando para iniciar o servidor de desenvolvimento:
+ npm run start
 
-# production mode
-$ npm run start:prod
-```
+ 3- O servidor estará em execução em http://localhost:3000. Você pode enviar uma solicitação POST para http://localhost:3000/image/save com o seguinte corpo no formato JSON:
+json:
+{
+    "image": "https://assets.storage.trakto.io/AkpvCuxXGMf3npYXajyEZ8A2APn2/0e406885-9d03-4c72-bd92-c6411fbe5c49.jpeg",
+    "compress": 0.9
+}
 
-## Test
+Substitua URL_DA_IMAGEM pela URL pública de uma imagem JPEG e VALOR_DE_COMPRESSÃO pelo valor de compressão desejado (entre 0 e 1).
 
-```bash
-# unit tests
-$ npm run test
+4- A imagem será salva no sistema de arquivos e uma versão reduzida da imagem será gerada com o sufixo _thumb no nome do arquivo. Os caminhos locais das imagens e os metadados do EXIF serão retornados como resposta.
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
+ 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
