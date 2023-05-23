@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Body, Res } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, Res, NotFoundException } from '@nestjs/common';
 import { Response } from 'express';
 import axios from 'axios';
 import * as sharp from 'sharp';
@@ -73,4 +73,26 @@ export class ImageController {
       });
     }
   }
+
+  @Get()
+async getAllImages(@Res() res: Response) {
+  try {
+    const images = await this.imageModel.find();
+
+    res.status(200).json({
+      images,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      errors: [
+        {
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Internal server error',
+        },
+      ],
+    });
+  }
+}
+
 }
