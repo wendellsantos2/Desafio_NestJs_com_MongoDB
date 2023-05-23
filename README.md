@@ -39,7 +39,7 @@ Use o gerenciador de pacotes npm para instalar as dependências.
 2- Execute o seguinte comando para iniciar o servidor de desenvolvimento:
  <h2>2- npm run start</h2>
 
- 3- O servidor estará em execução em http://localhost:3000. Você pode enviar uma solicitação POST para http://localhost:3000/image/save com o seguinte corpo no formato <br/> JSON: <br/>
+ 3- O servidor estará em execução em http://localhost:3000. Você pode enviar uma solicitação POST para http://localhost:3000/image/save com o seguinte corpo no formato JSON. <br/>
 json:  <br/> 
 {
     "image": "https://assets.storage.trakto.io/AkpvCuxXGMf3npYXajyEZ8A2APn2/0e406885-9d03-4c72-bd92-c6411fbe5c49.jpeg",<br/>
